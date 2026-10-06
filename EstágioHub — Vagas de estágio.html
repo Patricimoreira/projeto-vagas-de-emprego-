@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EstágioHub — Vagas de estágio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F7FB;--surface:#FFFFFF;--soft:#EEF0F8;--text:#14172B;--muted:#5B6180;--line:#E1E4F0;
+  --brand:#4F46E5;--brand2:#7C3AED;--ok:#0E9F6E;--onbrand:#FFFFFF;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1020;--surface:#171A2F;--soft:#1F2340;--text:#F1F2FA;--muted:#A3A9C9;--line:#2A2F52;--brand:#8B85FF;--brand2:#B48BFF;--onbrand:#0E1020}}
+:root[data-theme="dark"]{--bg:#0E1020;--surface:#171A2F;--soft:#1F2340;--text:#F1F2FA;--muted:#A3A9C9;--line:#2A2F52;--brand:#8B85FF;--brand2:#B48BFF;--onbrand:#0E1020}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth;height:100%}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+.c{width:100%;max-width:1080px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.15;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+/* topo */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .c{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:800;font-size:19px;display:flex;align-items:center;gap:9px;text-decoration:none}
+.logo i{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;color:var(--onbrand);font-style:normal;font-size:15px}
+.top nav{display:flex;gap:6px;align-items:center}
+.top nav a{text-decoration:none;font-size:14px;font-weight:600;color:var(--muted);padding:8px 12px;border-radius:8px;transition:.2s}
+.top nav a:hover{color:var(--text);background:var(--soft)}
+.top nav a.cta{background:var(--brand);color:var(--onbrand)}
+.top nav a.cta:hover{filter:brightness(1.08);background:var(--brand)}
+@media(max-width:560px){.top nav a:not(.cta){display:none}}
+/* hero */
+.hero{padding:64px 0 48px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-120px 0 auto;height:420px;background:radial-gradient(closest-side at 50% 40%,color-mix(in srgb,var(--brand) 22%,transparent),transparent);pointer-events:none}
+.pill{display:inline-block;font-size:13px;font-weight:700;color:var(--brand);background:var(--soft);border:1px solid var(--line);padding:6px 14px;border-radius:99px;margin-bottom:18px;position:relative}
+.hero h1{font-size:clamp(34px,8vw,60px);font-weight:800;max-width:780px;margin:0 auto 16px;position:relative}
+.hero h1 span{background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:clamp(16px,3.6vw,19px);max-width:600px;margin:0 auto 28px;position:relative}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:700;font-size:15.5px;padding:14px 24px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--text);text-decoration:none;cursor:pointer;transition:transform .2s,box-shadow .2s,filter .2s;min-height:48px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(79,70,229,.18)}
+.btn.p{background:linear-gradient(135deg,var(--brand),var(--brand2));color:var(--onbrand);border-color:transparent}
+.stats{display:flex;justify-content:center;gap:clamp(20px,6vw,56px);margin-top:40px;flex-wrap:wrap;position:relative}
+.stats b{display:block;font-size:30px;font-weight:800}
+.stats span{font-size:13.5px;color:var(--muted)}
+/* seções */
+section{padding:56px 0}
+.sh{text-align:center;margin-bottom:32px}
+.sh h2{font-size:clamp(26px,5.5vw,36px);font-weight:800;margin-bottom:8px}
+.sh p{color:var(--muted);margin:0 auto;max-width:560px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px}
+.step em{font-style:normal;width:36px;height:36px;border-radius:10px;background:var(--soft);color:var(--brand);display:grid;place-items:center;font-weight:800;margin-bottom:12px}
+.step h3{font-size:18px;margin-bottom:6px}.step p{margin:0;color:var(--muted);font-size:15px}
+/* vagas */
+.bar{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;margin-bottom:16px}
+@media(max-width:700px){.bar{grid-template-columns:1fr}}
+input,select,textarea{font:inherit;font-size:16px;width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--text);transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 22%,transparent)}
+textarea{min-height:110px;resize:vertical}
+.tw{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{text-align:left;font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:var(--soft);padding:12px 16px}
+td{padding:16px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr{transition:background .2s}tbody tr:hover{background:var(--soft)}
+td b{display:block;font-size:16px}td small{color:var(--muted)}
+.tag{display:inline-block;font-size:12.5px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--soft);color:var(--brand);white-space:nowrap}
+.tag.g{color:var(--ok)}
+.ap{display:inline-block;font-weight:700;font-size:14px;padding:9px 16px;border-radius:9px;background:var(--brand);color:var(--onbrand);text-decoration:none;white-space:nowrap}
+.empty{padding:48px 20px;text-align:center;color:var(--muted)}
+.empty b{display:block;color:var(--text);font-size:18px;margin-bottom:4px}
+@media(max-width:760px){
+  thead{display:none}
+  table,tbody,tr,td{display:block;width:100%}
+  tr{padding:14px 16px;border-top:1px solid var(--line)}tr:first-child{border-top:0}
+  td{border:0;padding:3px 0}
+  td[data-l]::before{content:attr(data-l)": ";color:var(--muted);font-size:13px}
+  td.t{margin-bottom:6px}td.a{margin-top:10px}
+}
+.note{font-size:13px;color:var(--muted);text-align:center;margin-top:12px}
+/* form */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,5vw,36px);max-width:760px;margin:0 auto;box-shadow:0 10px 40px rgba(20,23,43,.06)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:620px){.g2{grid-template-columns:1fr}}
+label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
+.f{margin-bottom:16px}.f small{color:var(--muted);font-size:12.5px;display:block;margin-top:4px}
+.msg{margin-top:14px;padding:12px 14px;border-radius:10px;font-size:14.5px;display:none}
+.msg.ok{display:block;background:color-mix(in srgb,var(--ok) 14%,transparent);color:var(--ok)}
+.msg.er{display:block;background:color-mix(in srgb,#E11D48 14%,transparent);color:#E11D48}
+footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--muted);font-size:14px}
+.in{opacity:0;transform:translateY(14px);animation:up .6s ease forwards}
+@keyframes up{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}.in{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="c">
+  <a class="logo" href="#"><i>E</i>EstágioHub</a>
+  <nav><a href="#como">Como funciona</a><a href="#vagas">Vagas</a><a class="cta" href="#cadastrar">Cadastrar vaga</a></nav>
+</div></header>
+
+<main>
+<section class="hero"><div class="c">
+  <span class="pill in">🎓 Conectando estudantes e empresas</span>
+  <h1 class="in" style="animation-delay:.08s">Seu próximo estágio começa <span>aqui</span></h1>
+  <p class="in" style="animation-delay:.16s">Empresas divulgam oportunidades em minutos. Estudantes encontram vagas e se candidatam direto com quem contrata.</p>
+  <div class="btns in" style="animation-delay:.24s">
+    <a class="btn p" href="#vagas">Ver vagas disponíveis</a>
+    <a class="btn" href="#cadastrar">Sou empresa: cadastrar vaga</a>
+  </div>
+  <div class="stats in" style="animation-delay:.32s">
+    <div><b id="sN">0</b><span>vagas abertas</span></div>
+    <div><b id="sE">0</b><span>empresas</span></div>
+    <div><b>100%</b><span>gratuito</span></div>
+  </div>
+</div></section>
+
+<section id="como" style="padding-top:24px"><div class="c">
+  <div class="sh"><h2>Como funciona</h2><p>Simples para quem oferece e para quem procura.</p></div>
+  <div class="steps">
+    <div class="step"><em>1</em><h3>A empresa cadastra</h3><p>Preenche o formulário com os dados da vaga e o contato para candidaturas.</p></div>
+    <div class="step"><em>2</em><h3>A vaga é publicada</h3><p>Ela aparece automaticamente na lista pública, sem aprovação manual.</p></div>
+    <div class="step"><em>3</em><h3>O estudante se candidata</h3><p>Filtra por área e modalidade e entra em contato direto com a empresa.</p></div>
+  </div>
+</div></section>
+
+<section id="vagas"><div class="c">
+  <div class="sh"><h2>Vagas disponíveis</h2><p>Busque por cargo, empresa ou cidade.</p></div>
+  <div class="bar">
+    <input id="q" type="search" placeholder="🔍 Buscar vaga, empresa ou cidade" aria-label="Buscar">
+    <select id="fa" aria-label="Área"><option value="">Todas as áreas</option></select>
+    <select id="fm" aria-label="Modalidade"><option value="">Todas as modalidades</option><option>Presencial</option><option>Híbrido</option><option>Remoto</option></select>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Vaga</th><th>Área</th><th>Modalidade</th><th>Bolsa</th><th>Carga</th><th></th></tr></thead>
+      <tbody id="tb"></tbody>
+    </table>
+    <div id="em" class="empty" style="display:none"><b>Nenhuma vaga por aqui ainda</b>Cadastre a primeira oportunidade pelo formulário abaixo.</div>
+  </div>
+  <p class="note" id="md"></p>
+</div></section>
+
+<section id="cadastrar" style="background:var(--soft)"><div class="c">
+  <div class="sh"><h2>Cadastre uma vaga</h2><p>Leva menos de 2 minutos. A vaga aparece na lista assim que for enviada.</p></div>
+  <div class="card">
+    <form id="fv" onsubmit="return false" novalidate>
+      <div class="g2">
+        <div class="f"><label for="emp">Empresa *</label><input id="emp" maxlength="80" placeholder="Nome da empresa"></div>
+        <div class="f"><label for="tit">Título da vaga *</label><input id="tit" maxlength="80" placeholder="Ex.: Estágio em Desenvolvimento"></div>
+        <div class="f"><label for="are">Área *</label>
+          <select id="are"><option value="">Selecione</option><option>Tecnologia</option><option>Administração</option><option>Marketing</option><option>Design</option><option>Saúde</option><option>Engenharia</option><option>Direito</option><option>Educação</option><option>Financeiro</option><option>Outra</option></select></div>
+        <div class="f"><label for="mod">Modalidade *</label>
+          <select id="mod"><option value="">Selecione</option><option>Presencial</option><option>Híbrido</option><option>Remoto</option></select></div>
+        <div class="f"><label for="cid">Cidade / UF</label><input id="cid" maxlength="60" placeholder="Ex.: Fortaleza, CE"></div>
+        <div class="f"><label for="bol">Bolsa-auxílio</label><input id="bol" maxlength="40" placeholder="Ex.: R$ 1.200 + vale-transporte"></div>
+        <div class="f"><label for="car">Carga horária</label><input id="car" maxlength="30" placeholder="Ex.: 6h/dia"></div>
+        <div class="f"><label for="con">Contato para candidatura *</label><input id="con" maxlength="120" placeholder="E-mail, WhatsApp ou link"></div>
+      </div>
+      <div class="f"><label for="des">Descrição e requisitos</label><textarea id="des" maxlength="600" placeholder="Atividades, requisitos, curso e semestre desejados…"></textarea><small>Até 600 caracteres.</small></div>
+      <button class="btn p" id="sb" type="submit" style="width:100%">Publicar vaga</button>
+      <div id="ms" class="msg" role="status"></div>
+    </form>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="c">EstágioHub · Conectando talentos a oportunidades</div></footer>
+
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  var vagas=[],store=null,LS='estagiohub_vagas';
+  function lsGet(){try{return JSON.parse(localStorage.getItem(LS)||'[]')}catch(e){return []}}
+  function lsSet(v){try{localStorage.setItem(LS,JSON.stringify(v))}catch(e){}}
+
+  function link(c){
+    c=(c||'').trim();var a=document.createElement('a');a.className='ap';a.textContent='Candidatar-se';a.rel='noopener';a.target='_blank';
+    if(/^https?:\/\//i.test(c))a.href=c;
+    else if(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c))a.href='mailto:'+c;
+    else if(/^[\d\s()+-]{10,}$/.test(c)){var d=c.replace(/\D/g,'');if(d.length<=11)d='55'+d;a.href='https://wa.me/'+d}
+    else{var s=document.createElement('small');s.textContent=c;return s}
+    return a;
+  }
+  function cell(cls,l){var td=document.createElement('td');if(cls)td.className=cls;if(l)td.setAttribute('data-l',l);return td}
+  function render(){
+    var q=$('q').value.toLowerCase(),fa=$('fa').value,fm=$('fm').value,tb=$('tb');
+    var list=vagas.filter(function(v){
+      return (!fa||v.area===fa)&&(!fm||v.mod===fm)&&(!q||(v.tit+' '+v.emp+' '+(v.cid||'')).toLowerCase().indexOf(q)>-1);
+    });
+    tb.textContent='';
+    list.forEach(function(v){
+      var tr=document.createElement('tr'),t=cell('t');
+      var b=document.createElement('b');b.textContent=v.tit;
+      var s=document.createElement('small');s.textContent=v.emp+(v.cid?' · '+v.cid:'');
+      t.appendChild(b);t.appendChild(s);
+      if(v.des){var d=document.createElement('small');d.style.display='block';d.style.marginTop='4px';d.textContent=v.des.length>140?v.des.slice(0,140)+'…':v.des;t.appendChild(d)}
+      var ta=cell('','Área'),tg=document.createElement('span');tg.className='tag';tg.textContent=v.area;ta.appendChild(tg);
+      var tm=cell('','Modalidade'),tg2=document.createElement('span');tg2.className='tag g';tg2.textContent=v.mod;tm.appendChild(tg2);
+      var tbo=cell('','Bolsa');tbo.textContent=v.bol||'A combinar';
+      var tc=cell('','Carga');tc.textContent=v.car||'—';
+      var ta2=cell('a');ta2.appendChild(link(v.con));
+      [t,ta,tm,tbo,tc,ta2].forEach(function(x){tr.appendChild(x)});
+      tb.appendChild(tr);
+    });
+    $('em').style.display=list.length?'none':'block';
+    $('sN').textContent=vagas.length;
+    $('sE').textContent=new Set(vagas.map(function(v){return v.emp.toLowerCase()})).size;
+    var ar=Array.from(new Set(vagas.map(function(v){return v.area}))).sort(),cur=$('fa').value;
+    $('fa').innerHTML='<option value="">Todas as áreas</option>';
+    ar.forEach(function(a){var o=document.createElement('option');o.textContent=a;o.value=a;$('fa').appendChild(o)});
+    $('fa').value=ar.indexOf(cur)>-1?cur:'';
+  }
+  ['q','fa','fm'].forEach(function(i){$(i).addEventListener('input',render)});
+
+  function say(t,ok){var m=$('ms');m.className='msg '+(ok?'ok':'er');m.textContent=t}
+  $('fv').addEventListener('submit',async function(){
+    var g=function(i){return $(i).value.trim()};
+    var v={emp:g('emp'),tit:g('tit'),area:g('are'),mod:g('mod'),cid:g('cid'),bol:g('bol'),car:g('car'),con:g('con'),des:g('des'),ts:Date.now()};
+    if(!v.emp||!v.tit||!v.area||!v.mod||!v.con){say('Preencha os campos obrigatórios (*).',false);return}
+    var btn=$('sb');btn.disabled=true;
+    try{
+      if(store){await store.add(v)}
+      else{vagas.unshift(v);lsSet(vagas);render()}
+      $('fv').reset();say('Vaga publicada com sucesso! Ela já está na lista acima.',true);
+      $('vagas').scrollIntoView({behavior:'smooth'});
+    }catch(e){say('Não foi possível publicar agora. Tente novamente.',false)}
+    btn.disabled=false;
+  });
+
+  /* Modo local imediato; passa para o banco compartilhado quando disponível */
+  vagas=lsGet();render();
+  if(window.claude&&claude.use){
+    claude.use('db').then(function(db){
+      if(!db){$('md').textContent='Modo local: as vagas ficam salvas só neste navegador.';return}
+      store=db.collection('vagas');
+      store.onSnapshot(function(s){
+        vagas=s.docs.map(function(d){return d.data()}).sort(function(a,b){return (b.ts||0)-(a.ts||0)});
+        render();$('md').textContent='';
+      },function(){store=null;$('md').textContent='Modo local: as vagas ficam salvas só neste navegador.'});
+    }).catch(function(){});
+  }else{$('md').textContent='Modo local: as vagas ficam salvas só neste navegador.'}
+})();
+</script>
+</body>
+</html>
